@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+span#main {
+	font-size: 3rem;
+	font-weight: 500;
+	color: blue;
+}
+span#side {
+	font-size: 2rem;
+	font-weight: 500;
+	color: purple;
+}
+span#drink {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: green;
+}
