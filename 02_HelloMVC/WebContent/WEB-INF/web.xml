@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>02_HelloMVC</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!--  웰컴페이지는 url 경로 하위에서 자동으로 찾음 -->
+  
+  <!-- 
+  	세션리스너나 서블렛 등의 클래스 파일은 네비게이터 WEB-INF 하위 classes 안에서 찾음.
+  	그래서 그냥 src 밑인 것처럼 패키지루트로 작성해서 쓰는 것. 
+  -->
+ 	<!-- 세션 관리  -->
+  <session-config>
+  	<session-timeout>5</session-timeout> <!-- 세션 만료 관리. 분단위 -->
+  </session-config>
+  
+  <listener>
+  	<!-- 리스너 연결. 리스너클래스에 @WebListener 임포트해서 쓰면 안써줘도 됨 -->
+  	<listener-class>common.listener.SessionCounterListener</listener-class>
+  </listener>
+  
+</web-app>
