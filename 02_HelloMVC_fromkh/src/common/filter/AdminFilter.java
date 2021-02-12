@@ -16,15 +16,15 @@ import javax.servlet.http.HttpSession;
 import member.model.vo.Member;
 
 /**
- * Servlet Filter implementation class MemberAuthFilter
+ * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/member/memberView")
-public class MemberAuthFilter implements Filter {
+@WebFilter("/admin/*")
+public class AdminFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public MemberAuthFilter() {
+    public AdminFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -42,22 +42,19 @@ public class MemberAuthFilter implements Filter {
 
 		HttpServletRequest httpReq = (HttpServletRequest)request;
 		HttpSession session = httpReq.getSession();
-		HttpServletResponse httpResp = (HttpServletResponse)response;
+		Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
 		
-		Member member = (Member)session.getAttribute("memberLoggedIn");
-		
-		String memberId = httpReq.getParameter("memberId");
-		
-		if(!(member != null 
-				&& memberId != null
-				&& member.getMemberId().equals(memberId))) {
-			session.setAttribute("msg", "해당 아이디에 접속한 상태로 시도해주세요.");
-			httpResp.sendRedirect(httpReq.getContextPath() + "/member/memberView?memberId=" + member.getMemberId());
-			return;			
+		if(!(memberLoggedIn.getMemberRole() != null 
+				&& memberLoggedIn.getMemberRole().equals("A"))) {
+			
+			session.setAttribute("msg", "관리자 계정으로 접근해주세요.");
+			HttpServletResponse httpResp = (HttpServletResponse)response;
+			
+			httpResp.sendRedirect(httpReq.getContextPath());
+			return;
 		}
 		
-		chain.doFilter(request, response);	// 서블렛 작업 전후 순서를 구분해주는 메소드
-		
+		chain.doFilter(request, response);
 	}
 
 	/**

@@ -55,6 +55,7 @@ select * from member;
 desc member;
 delete from member_copy where member_name = '한광희';
 --------------------------------
+select * from member where member_id like '%a%';
 
 update member_copy set password = 1246 where member_id = 'sinsa';
 delete from member_copy where member_id = '1234';

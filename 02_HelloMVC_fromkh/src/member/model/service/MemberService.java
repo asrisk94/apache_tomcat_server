@@ -15,6 +15,9 @@ import static common.JDBCTemplate.*;
  */
 public class MemberService {
 
+	public static final String ADMIN_MEMBER_ROLE = "A";	// 관리자 롤 지정
+	public static final String USER_MEMBER_ROLE = "U";	// 일반사용자 롤 지정
+	
 	private MemberDao memberDao = new MemberDao();
 
 	public Member selectOne(String memberId) {

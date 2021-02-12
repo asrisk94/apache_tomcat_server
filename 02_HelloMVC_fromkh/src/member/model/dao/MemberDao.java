@@ -120,15 +120,15 @@ public class MemberDao {
 			//미완성쿼리문을 가지고 객체생성.
 			pstmt = conn.prepareStatement(query);
 			//쿼리문값대입
-			pstmt.setString(1, member.getPassword());
-			pstmt.setString(2, member.getMemberName());
-			pstmt.setString(3, member.getGender());
-			pstmt.setDate(4, member.getBirthDay());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6, member.getPhone());
-			pstmt.setString(7, member.getAddress());
-			pstmt.setString(8, member.getHobby());
-			pstmt.setString(9, member.getMemberId());
+//			pstmt.setString(1, member.getPassword());
+			pstmt.setString(1, member.getMemberName());
+			pstmt.setString(2, member.getGender());
+			pstmt.setDate(3, member.getBirthDay());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getPhone());
+			pstmt.setString(6, member.getAddress());
+			pstmt.setString(7, member.getHobby());
+			pstmt.setString(8, member.getMemberId());
 			
 			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
 			//DML은 executeUpdate()
